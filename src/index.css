@@ -1,0 +1,44 @@
+@import "tailwindcss";
+.nav-link {
+  position: relative;
+  color: #1E1E1E;
+  transition: color 0.3s ease;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #6C63FF; /* active/hover text color */
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #6C63FF;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+
+/* ========================================== TAILWIND STYLES */
+@layer utilities {
+  .wrapper {
+    @apply max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }}
