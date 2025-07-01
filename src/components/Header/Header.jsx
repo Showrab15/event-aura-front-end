@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import banner from "../../assets/heroimage.jpg"
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -42,13 +43,16 @@ const Header = () => {
             Discover & manage events with ease. Join 3,000+ active users making their events unforgettable.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-pink-500 hover:to-purple-500 text-white py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300"
-          >
-            Get Started
-          </motion.button>
+         
+<Link to="/add-events">
+  <motion.button
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-pink-500 hover:to-purple-500 text-white py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300"
+  >
+   Get Started
+  </motion.button>
+</Link>
         </motion.div>
       </motion.div>
     </section>

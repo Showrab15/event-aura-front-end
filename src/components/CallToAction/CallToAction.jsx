@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import join from "../../assets/pexels-fauxels-3184306.jpg";
+import { Link } from "react-router-dom";
 
 const CallToAction = () => {
   return (
@@ -25,16 +26,16 @@ const CallToAction = () => {
             Collaborate. Create. Celebrate. Whether you're planning an event or joining one,
             take the first step toward something truly memorable.
           </p>
-
-          <motion.a
+<Link to="add-events">  <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            href="/add-event"
+           
             className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-indigo-700 font-bold shadow-lg hover:bg-gray-100 transition"
           >
             Create Your Event
             <ArrowRight className="ml-2 w-5 h-5" />
-          </motion.a>
+          </motion.a></Link>
+         
         </motion.div>
       </div>
 

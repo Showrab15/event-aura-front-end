@@ -138,7 +138,7 @@ const Register = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-pink-500 hover:to-purple-500 text-white py-2 rounded-lg font-semibold shadow-lg transition-all duration-300"
+            className="cursor-pointer w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-pink-500 hover:to-purple-500 text-white py-2 rounded-lg font-semibold shadow-lg transition-all duration-300"
           >
             Register
           </motion.button>

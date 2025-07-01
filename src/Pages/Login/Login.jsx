@@ -55,6 +55,10 @@ const handleSubmit = async (e) => {
     if (!res.ok) {
       setError(data.message || "Login failed");
     } else {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          console.log(data.user)
+    alert("Login successful");
+
       navigate("/");
     }
   } catch (err) {
@@ -115,7 +119,7 @@ const handleSubmit = async (e) => {
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     type="submit"
-    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-pink-500 hover:to-purple-500
+    className="cursor-pointer w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-pink-500 hover:to-purple-500
      text-white py-2 rounded-lg font-semibold shadow-lg transition-all duration-300"
   >
     Sign In

@@ -15,29 +15,10 @@ const Navbar = () => {
   const location = useLocation();
 const [skipFetchUser, setSkipFetchUser] = useState(false);
 
-// useEffect(() => {
-//   const fetchUser = async () => {
-//     try {
-//       const res = await fetch("http://localhost:5000/me", {
-//         credentials: "include",
-//       });
-//       if (res.ok) {
-//         const data = await res.json();
-//         setUser(data);
-//       } else {
-//         setUser(null);
-//       }
-//     } catch (err) {
-//       console.error("Auth check failed", err);
-//       setUser(null);
-//     }
-//   };
 
-//   fetchUser();
-// }, [location]);
 useEffect(() => {
-   if (skipFetchUser) {
-    setSkipFetchUser(false); // reset after one skip
+  if (skipFetchUser) {
+    setSkipFetchUser(false);
     return;
   }
   const fetchUser = async () => {
@@ -47,20 +28,16 @@ useEffect(() => {
       });
 
       if (res.status === 401) {
-        // Not authenticated, expected after logout
         setUser(null);
         return;
       }
 
-      if (!res.ok) {
-        // Unexpected error (e.g. 500)
-        throw new Error("Something went wrong");
-      }
+      if (!res.ok) throw new Error("Something went wrong");
 
       const data = await res.json();
+      console.log("Fetched user:", data); // 👈 add this temporarily
       setUser(data);
     } catch (err) {
-      // Silently catch any other errors (no console.log)
       setUser(null);
     }
   };
@@ -69,10 +46,10 @@ useEffect(() => {
 }, [location]);
 
 
+
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-//  const handleLogout = async () => {
 //   try {
 //     await fetch("http://localhost:5000/logout", {
 //       method: "POST",
@@ -87,12 +64,26 @@ useEffect(() => {
 // };
 
   // Close dropdown on outside click
-  
-const handleLogout = () => {
+
+
+  // old
+ const handleLogout = async () => {
+  try {
+    await fetch("http://localhost:5000/logout", {
+      method: "POST",
+      credentials: "include", // ✅ Required to send cookies
+    });
+  } catch (err) {
+    console.error("Logout error", err);
+  }
+
   setUser(null);
-  setSkipFetchUser(true); // 👈 skip one `/me` call
+  setSkipFetchUser(true);
   navigate("/");
 };
+
+
+
   
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -130,6 +121,9 @@ const handleLogout = () => {
             <div className="relative" ref={dropdownRef}>
               <img
                 src={user.photoURL}
+                crossOrigin= "anonymous"
+                  onError={(e) => (e.target.src = "/default-avatar.png")}
+
                 alt="profile"
                 className="w-10 h-10 rounded-full cursor-pointer object-cover"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
