@@ -17,31 +17,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-//   const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   try {
-//     const res = await fetch("http://localhost:5000/login", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(formData), // ✅ use formData directly
-//     });
 
-//     const data = await res.json();
-
-//     if (!res.ok) {
-//       setError(data.message || "Login failed");
-//     } else {
-//       localStorage.setItem("user", JSON.stringify(data.user));
-//       navigate("/");
-//     }
-//   } catch (err) {
-//     console.error("Login error:", err);
-//   }
-// };
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch("http://localhost:5000/login", {
+    const res = await fetch("https://eventaura-server.vercel.app/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

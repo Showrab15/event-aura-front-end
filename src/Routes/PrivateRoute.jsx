@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:5000/check-auth", {
+        const res = await fetch("https://eventaura-server.vercel.app/check-auth", {
           credentials: "include",
         });
 

@@ -38,7 +38,7 @@ const AddEvent = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/add-events", {
+      const res = await fetch("https://eventaura-server.vercel.app/add-events", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

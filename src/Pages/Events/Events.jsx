@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 // import { motion } from "framer-motion";
@@ -106,7 +107,7 @@ const EventsPage = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/events", {
+      const res = await axios.get("https://eventaura-server.vercel.app/events", {
         params: {
           search: searchTerm,
           filter: filter,
@@ -124,7 +125,7 @@ const EventsPage = () => {
  const handleJoin = async (id) => {
   try {
     await axios.post(
-      `http://localhost:5000/events/join/${id}`,
+      `https://eventaura-server.vercel.app/events/join/${id}`,
       {},
       { withCredentials: true }
     );

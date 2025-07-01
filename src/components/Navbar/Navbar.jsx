@@ -23,7 +23,7 @@ useEffect(() => {
   }
   const fetchUser = async () => {
     try {
-      const res = await fetch("http://localhost:5000/me", {
+      const res = await fetch("https://eventaura-server.vercel.app/me", {
         credentials: "include",
       });
 
@@ -69,7 +69,7 @@ useEffect(() => {
   // old
  const handleLogout = async () => {
   try {
-    await fetch("http://localhost:5000/logout", {
+    await fetch("https://eventaura-server.vercel.app/logout", {
       method: "POST",
       credentials: "include", // ✅ Required to send cookies
     });

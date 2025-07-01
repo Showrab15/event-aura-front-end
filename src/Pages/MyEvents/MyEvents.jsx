@@ -11,7 +11,7 @@ const MyEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/my-events", {
+      const res = await axios.get("https://eventaura-server.vercel.app/my-events", {
         withCredentials: true,
       });
       setEvents(res.data);
@@ -31,7 +31,7 @@ const MyEvents = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:5000/events/${id}`, {
+      await axios.delete(`https://eventaura-server.vercel.app/events/${id}`, {
         withCredentials: true,
       });
       setEvents((prev) => prev.filter((e) => e._id !== id));
@@ -45,7 +45,7 @@ const MyEvents = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:5000/events/${editingEvent._id}`,
+        `https://eventaura-server.vercel.app/events/${editingEvent._id}`,
         {
           title: editingEvent.title,
           dateTime: editingEvent.dateTime,

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // /* eslint-disable no-unused-vars */
 // import { motion } from "framer-motion";
 
@@ -258,7 +259,7 @@ const Upcoming = () => {
   useEffect(() => {
     const fetchUpcoming = async () => {
       try {
-        const res = await fetch("http://localhost:5000/featured-upcoming-events", {
+        const res = await fetch("https://eventaura-server.vercel.app/featured-upcoming-events", {
           credentials: "include",
         });
         const data = await res.json();
@@ -277,7 +278,7 @@ const Upcoming = () => {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/me", {
+        const res = await fetch("https://eventaura-server.vercel.app/me", {
           credentials: "include",
         });
         if (res.ok) {
@@ -313,7 +314,7 @@ const Upcoming = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/events/join/${eventId}`, {
+      const res = await fetch(`https://eventaura-server.vercel.app/events/join/${eventId}`, {
         method: "POST",
         credentials: "include",
       });
