@@ -145,16 +145,15 @@ git push origin branch-name
 
 #### Folder Structure 📁
 event-management-app/
-│
-├─ public/               # Public assets like index.html
+├─ public/          # Public assets like index.html
 ├─ src/
-│   ├─ components/       # React components (Navbar, EventCard, etc.)
-│   ├─ pages/            # Pages (Home, Events, AddEvent, MyEvent, Login, Register)
-│   ├─ utils/            # Utility functions (API calls, helper functions)
-│   ├─ App.jsx            # Main App component with routes
-│   └─ main.jsx           # React DOM entry point
-├─ package.json           # Project dependencies and scripts
-└─ tailwind.config.js     # Tailwind CSS configuration
+│  ├─ components/   # React components (Navbar, EventCard, etc.)
+│  ├─ pages/        # Pages (Home, Events, AddEvent, MyEvent, Login, Register)
+│  ├─ utils/        # Utility functions (API calls, helper functions)
+│  ├─ App.jsx       # Main App component with routes
+│  └─ main.jsx      # React DOM entry point
+├─ package.json     # Project dependencies and scripts
+└─ tailwind.config.js  # Tailwind CSS configuration
 
 #### License 📄
 This project is licensed under the MIT License – see the LICENSE file for details.
