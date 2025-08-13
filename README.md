@@ -144,7 +144,7 @@ git push origin branch-name
 - Lint Project: npm run lint
 
 ### Folder Structure 📁
-event-management-app/
+```event-management-app/
 ├─ public/ # Public assets like index.html
 ├─ src/
 │ ├─ components/ # React components (Navbar, EventCard, etc.)
@@ -154,7 +154,7 @@ event-management-app/
 │ └─ main.jsx # React DOM entry point
 ├─ package.json # Project dependencies and scripts
 └─ tailwind.config.js # Tailwind CSS configuration
-
+```
 #### License 📄
 This project is licensed under the MIT License – see the LICENSE file for details.
 
