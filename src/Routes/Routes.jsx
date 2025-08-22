@@ -1,7 +1,4 @@
-import {
-  createBrowserRouter
-} from "react-router-dom";
-import App from "../App";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
@@ -14,38 +11,45 @@ import MyEvents from "../Pages/MyEvents/MyEvents";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout/>,
+    element: <MainLayout />,
     children: [
-{
-    path : '/',
-    element: <Home/>
-},
-{
-  path : '/register',
-  element: <Register/>
-},
-{
-  path: '/login',
-  element: <Login/>
-},
-{
-  path: '/add-events',
-  element:           <PrivateRoute>
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/add-events",
+        element: (
+          <PrivateRoute>
             <AddEvent />
           </PrivateRoute>
-
-},
-{
-  path: '/events',
-  element:   <PrivateRoute>
-           <Events/>
-          </PrivateRoute> 
-},
-{
-  path: '/my-event',
-  element: <MyEvents/>
-}
-    ]
+        ),
+      },
+      {
+        path: "/events",
+        element: (
+          <PrivateRoute>
+            <Events />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-event",
+        element: (
+          <PrivateRoute>
+            <MyEvents />{" "}
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
 ]);
 

@@ -23,31 +23,38 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
+  e.preventDefault();
+  setError("");
+  setSuccess("");
 
+  try {
+    const res = await fetch("https://eventaura-server.vercel.app/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const text = await res.text(); // <-- get text first
+    let data;
     try {
-      const res = await fetch("https://eventaura-server.vercel.app/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Registration failed");
-      } else {
-        setSuccess("Registration successful!");
-        alert("Registration successful!")
-        setTimeout(() => navigate("/login"), 1500); // Redirect after success
-      }
-    } catch (err) {
-      console.error("Registration error:", err);
-      setError("Something went wrong. Please try again later.");
+      data = JSON.parse(text); // try parsing JSON
+    } catch {
+      data = { message: text }; // fallback to raw text
     }
-  };
+
+    if (!res.ok) {
+      setError(data.message || "Registration failed");
+    } else {
+      setSuccess("Registration successful!");
+      alert("Registration successful!");
+      setTimeout(() => navigate("/login"), 1500);
+    }
+  } catch (err) {
+    console.error("Registration error:", err);
+    setError("Something went wrong. Please try again later.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-600 flex items-center justify-center px-4 py-12">

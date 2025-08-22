@@ -15,12 +15,13 @@ const Navbar = () => {
   const location = useLocation();
 const [skipFetchUser, setSkipFetchUser] = useState(false);
 
-
 useEffect(() => {
-  if (skipFetchUser) {
-    setSkipFetchUser(false);
-    return;
-  }
+  if (skipFetchUser) return;
+  fetchUser();
+}, [location, skipFetchUser]);
+
+
+
   const fetchUser = async () => {
     try {
       const res = await fetch("https://eventaura-server.vercel.app/me", {
@@ -42,45 +43,29 @@ useEffect(() => {
     }
   };
 
-  fetchUser();
-}, [location]);
-
 
 
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-//   try {
-//     await fetch("http://localhost:5000/logout", {
-//       method: "POST",
-//       credentials: "include",
-//     });
-//   } catch (err) {
-//     console.error("Logout error", err);
-//   }
-//   setUser(null);
-//   setDropdownOpen(false);
-//   navigate("/");
-// };
-
-  // Close dropdown on outside click
-
-
-  // old
  const handleLogout = async () => {
   try {
     await fetch("https://eventaura-server.vercel.app/logout", {
       method: "POST",
-      credentials: "include", // ✅ Required to send cookies
+      credentials: "include",
     });
   } catch (err) {
     console.error("Logout error", err);
   }
 
+  localStorage.removeItem("user");
   setUser(null);
-  setSkipFetchUser(true);
+  setSkipFetchUser(true); // Prevent refetch
   navigate("/");
+window.location.reload();
+
 };
+
 
 
 
@@ -186,7 +171,7 @@ useEffect(() => {
                     handleLogout();
                     closeMenu();
                   }}
-                  className="text-red-500 hover:underline"
+                  className="text-red-500 hover:underline "
                 >
                   Logout
                 </button>

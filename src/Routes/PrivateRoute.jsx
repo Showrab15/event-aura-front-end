@@ -5,26 +5,23 @@ const PrivateRoute = ({ children }) => {
   const [isAuth, setIsAuth] = useState(null); // null = loading
   const location = useLocation();
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await fetch("https://eventaura-server.vercel.app/check-auth", {
-          credentials: "include",
-        });
+ useEffect(() => {
+  const checkAuth = async () => {
+    try {
+      const res = await fetch("https://eventaura-server.vercel.app/check-auth", {
+        credentials: "include",
+      });
 
-        if (res.ok) {
-          setIsAuth(true); // ✅ Authenticated
-        } else {
-          setIsAuth(false); // ❌ Not authenticated
-        }
-      } catch (err) {
-        console.error("Auth check failed", err);
-        setIsAuth(false);
-      }
-    };
+      setIsAuth(res.ok);
+    } catch {
+      setIsAuth(false);
+    }
+  };
 
-    checkAuth();
-  }, []);
+  checkAuth();
+}, [location]);
+
+
 
   if (isAuth === null) {
     return <div>Loading...</div>; // Or a spinner

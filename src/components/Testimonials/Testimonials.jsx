@@ -92,7 +92,7 @@ const Testimonials = () => {
         <div className="flex flex-col md:flex-row gap-12">
           {/* Left: Timeline */}
           <div className="flex-1 relative border-l-4 border-blue-200 ml-4 space-y-16">
-            {reviews.map((testimonial, index) => (
+            {reviews.slice(0,3).map((testimonial, index) => (
               <motion.div
                 key={index}
                 className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:pl-12" : "md:pr-12"} items-start gap-6 relative`}

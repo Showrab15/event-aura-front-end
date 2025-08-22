@@ -26,7 +26,7 @@ const CallToAction = () => {
             Collaborate. Create. Celebrate. Whether you're planning an event or joining one,
             take the first step toward something truly memorable.
           </p>
-<Link to="add-events">  <motion.a
+  <motion.a href="add-events"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
            
@@ -34,7 +34,7 @@ const CallToAction = () => {
           >
             Create Your Event
             <ArrowRight className="ml-2 w-5 h-5" />
-          </motion.a></Link>
+          </motion.a>
          
         </motion.div>
       </div>

@@ -15,7 +15,7 @@ const Footer = () => {
       >
         {/* Logo + About */}
         <div>
-          <h3 className="text-2xl font-extrabold mb-4 text-[#ff5733]">EventAura</h3>
+          <h3 className="text-2xl font-extrabold mb-4 text-white">EventAura</h3>
           <p className="text-sm text-white/80 leading-relaxed">
             Your trusted platform to discover, host, and join amazing events. Make every moment count with EventAura.
           </p>
